@@ -1,0 +1,27 @@
+.categ-loading-anim {
+	height: 70px;
+	width: 100%;
+	background: #e9e9e9;
+	position: relative;
+	border-radius: 5px;
+}
+
+.categ-loading-anim i {
+	position: absolute;
+	font-size: 45px;
+	top: 50%;
+	left: 50%;
+	color: #f5a23d;
+	transform: translate(-50%, -50%);
+	animation: spin 2s ease-out infinite;
+}
+
+
+@keyframes spin {
+	from {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	to {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
