@@ -1,9 +1,11 @@
 import './App.css';
 import { Component } from "react";
 
-import Category from './Components/Category/Category';
 import CategoryLoadingAnim from './Animations/CategoryLoadingAnim';
+import ProductLoadingAnim from './Animations/ProductLoadingAnim';
+import Category from './Components/Category/Category';
 import SearchField from './Components/Products/SearchField';
+import Products from './Components/Products/Products';
 
 
 
@@ -12,10 +14,13 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			loading: true,
+			categoriesLoading: true,
+			productsLoading: true,
 			categories: [ /* categories */ ],
-			products: { /* products */ },
+			products: [ /* products */ ],
+			searchItem: ''
 		};
+		this.searchProduct = this.searchProduct.bind(this);
 	}
 
 	componentDidMount() {
@@ -24,7 +29,7 @@ class App extends Component {
 		.then(resp => resp.json())
 		.then(json => this.setState({
 			products: json,
-			loading: false
+			productsLoading: false
 		}));
 
 		// Fetching data for categories
@@ -32,20 +37,30 @@ class App extends Component {
 		.then(resp => resp.json())
 		.then(json => this.setState({
 			categories: json,
-			loading: false
+			categoriesLoading: false
 		}));
 	}
 
 	componentWillUnmount() {
 		this.setState({
-			loading: true,
+			categoriesLoading: true,
+			productsLoading: true,
 			categories: [],
-			products: {}
+			products: [],
+			searchItem: ''
+		});
+	}
+
+	searchProduct(e) {
+		const value = e.target.value;
+
+		this.setState({
+			searchItem: value
 		});
 	}
 
 	render() {
-		const { loading, categories, products } = this.state;
+		const { categoriesLoading, productsLoading, categories, products, searchItem } = this.state;
 
 		return (
 			<div className="App">
@@ -64,7 +79,7 @@ class App extends Component {
 					<div className="categories">
 						<p>Categories</p>
 						<ul>
-						{loading || !categories ? <CategoryLoadingAnim /> :
+						{categoriesLoading || !categories ? <CategoryLoadingAnim /> :
 						categories.map(category =>
 							<Category
 								key={category.toUpperCase()}
@@ -74,8 +89,17 @@ class App extends Component {
 						</ul>
 					</div>
 					<div className="products">
-						<SearchField />
-
+						<SearchField
+							product={searchItem}
+							searchHandler={this.searchProduct}
+						/>
+						<Products>
+						{productsLoading || !products ?
+						<ProductLoadingAnim /> :
+						// Each product matches
+						null
+						}
+						</Products>
 					</div>
 
 				</div>

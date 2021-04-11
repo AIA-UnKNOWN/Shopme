@@ -1,16 +1,19 @@
 li {
 	list-style: none;
-	font-variant: small-caps;
-	font-size: 18px;
 }
 
 button {
 	padding: 10px;
 	display: block;
 	width: 100%;
-	border: none;
+	border: 1px solid #f5a23d;
+	color: #f5a23d;
 	margin-top: 5px;
 	border-radius: 5px;
+	background: none;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 11px;
 }
 
 button:hover {

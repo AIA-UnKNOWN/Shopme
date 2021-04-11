@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-
 header {
 	padding: 20px 30px;
 	display: flex;
@@ -24,7 +22,7 @@ header ul li {
 
 header ul li a {
 	text-decoration: none;
-	background: rgb(37, 37, 37);
+	background: rgba(37, 37, 37, 0.452);
 	padding: 8px 15px;
 	color: white;
 	border-radius: 5px;
@@ -32,7 +30,6 @@ header ul li a {
 
 .content {
 	display: flex;
-	
 }
 
 .fa-bars {
@@ -43,16 +40,25 @@ header ul li a {
 .categories {
 	width: 250px;	
 	height: 100vh;
-	padding: 10px 15px;
+	padding: 20px 15px;
 	font-family: 'Noto Sans', sans-serif;
-	/* box-shadow: 0 0 1px black; */
 }
 
 .categories p {
 	font-size: 20px;
 	text-align: center;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	letter-spacing: 1px;
+	padding-bottom: 5px;
+}
+
+.categories p::after {
+	content: '';
+	display: block;
+	height: 3px;
+	width: 50px;
+	background: #f5a23d;
+	margin: 5px auto 0;
 }
 
 .products {

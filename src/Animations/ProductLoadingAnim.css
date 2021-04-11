@@ -1,12 +1,12 @@
-.categ-loading-anim {
-	height: 70px;
+.product-loading-anim {
+	height: 150px;
 	width: 100%;
 	background: #f3f3f3;
 	position: relative;
 	border-radius: 5px;
 }
 
-.categ-loading-anim i {
+.product-loading-anim i {
 	position: absolute;
 	font-size: 45px;
 	top: 50%;
@@ -15,7 +15,6 @@
 	transform: translate(-50%, -50%);
 	animation: spin 2s ease-out infinite;
 }
-
 
 @keyframes spin {
 	from {

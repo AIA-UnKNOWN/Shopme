@@ -1,0 +1,10 @@
+.result-indicator {
+	text-align: center;
+	padding: 20px;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.items {
+	padding: 0 10px 10px;
+}
