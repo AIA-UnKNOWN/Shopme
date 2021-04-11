@@ -3,6 +3,7 @@ import { Component } from "react";
 
 import Category from './Components/Category/Category';
 import CategoryLoadingAnim from './Animations/CategoryLoadingAnim';
+import SearchField from './Components/Products/SearchField';
 
 
 
@@ -71,6 +72,10 @@ class App extends Component {
 							/>)
 						}
 						</ul>
+					</div>
+					<div className="products">
+						<SearchField />
+
 					</div>
 
 				</div>

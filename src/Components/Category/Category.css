@@ -14,7 +14,6 @@ button {
 }
 
 button:hover {
-	/* background: #d6d5d4; */
 	background: #f5a23d;
 	color: #fff;
 }

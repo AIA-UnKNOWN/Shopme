@@ -1,0 +1,28 @@
+.search-area {
+	height: 500px;
+	background: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjJ8fHNob3BwaW5nfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+
+.search-area div {
+	background: rgba(255, 255, 255, 0.808);
+	width: fit-content;
+	padding: 10px 15px;
+	border-radius: 25px;
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#search-product {
+	padding: 5px;
+	border: none;
+	background: none;
+	outline: none;
+	margin-right: 5px;
+	width: 400px;
+}

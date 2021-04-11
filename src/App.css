@@ -42,9 +42,10 @@ header ul li a {
 /* Categories */
 .categories {
 	width: 250px;	
+	height: 100vh;
 	padding: 10px 15px;
 	font-family: 'Noto Sans', sans-serif;
-	box-shadow: 0 0 1px black;
+	/* box-shadow: 0 0 1px black; */
 }
 
 .categories p {
@@ -52,4 +53,9 @@ header ul li a {
 	text-align: center;
 	margin-bottom: 10px;
 	letter-spacing: 1px;
+}
+
+.products {
+	width: 800px;
+	box-shadow: 0 1px 1px black;
 }
