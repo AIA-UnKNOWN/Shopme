@@ -2,7 +2,7 @@ li {
 	list-style: none;
 }
 
-button {
+.category {
 	padding: 10px;
 	display: block;
 	width: 100%;
@@ -16,11 +16,11 @@ button {
 	font-size: 11px;
 }
 
-button:hover {
+.category:hover {
 	background: #f5a23d;
 	color: #fff;
 }
 
-button:focus {
+.category:focus {
 	outline: none;
 }

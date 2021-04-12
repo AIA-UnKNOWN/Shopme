@@ -6,6 +6,7 @@ import ProductLoadingAnim from './Animations/ProductLoadingAnim';
 import Category from './Components/Category/Category';
 import SearchField from './Components/Products/SearchField';
 import Products from './Components/Products/Products';
+import Product from './Components/Products/Product';
 
 
 
@@ -93,12 +94,20 @@ class App extends Component {
 							product={searchItem}
 							searchHandler={this.searchProduct}
 						/>
-						<Products>
+						<Products itemsFound={100}>
 						{productsLoading || !products ?
-						<ProductLoadingAnim /> :
-						// Each product matches
-						null
-						}
+							<ProductLoadingAnim /> :
+							// Each product matches
+							products.map(product =>
+								<Product
+									viewProduct={null}
+									productImg={product.image}
+									productTitle={product.title}
+									productPrice={product.price}
+									addToCart={null}
+								/>
+							)
+						}		
 						</Products>
 					</div>
 
