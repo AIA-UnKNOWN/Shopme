@@ -94,7 +94,7 @@ class App extends Component {
 							product={searchItem}
 							searchHandler={this.searchProduct}
 						/>
-						<Products itemsFound={100}>
+						<Products itemsFound={products.length}>
 						{productsLoading || !products ?
 							<ProductLoadingAnim /> :
 							// Each product matches
