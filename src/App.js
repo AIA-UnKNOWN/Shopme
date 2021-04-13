@@ -19,7 +19,8 @@ class App extends Component {
 			productsLoading: true,
 			categories: [ /* categories */ ],
 			products: [ /* products */ ],
-			searchItem: ''
+			searchItem: '',
+			newProducts: []
 		};
 		this.searchProduct = this.searchProduct.bind(this);
 	}
@@ -30,6 +31,7 @@ class App extends Component {
 		.then(resp => resp.json())
 		.then(json => this.setState({
 			products: json,
+			newProducts: json,
 			productsLoading: false
 		}));
 
@@ -48,20 +50,31 @@ class App extends Component {
 			productsLoading: true,
 			categories: [],
 			products: [],
-			searchItem: ''
+			searchItem: '',
+			newProducts: []
 		});
 	}
 
 	searchProduct(e) {
-		const value = e.target.value;
+		const searchItem = e.target.value;
+		const products = this.state.products;
+		const productsLoading = this.state.productsLoading;
+
+		let newProductsRes = products.filter(product => product.title.toLowerCase().includes(searchItem)) || products.description.toLowerCase().includes(searchItem);
 
 		this.setState({
-			searchItem: value
+			productsLoading,
+			searchItem,
+			newProducts: newProductsRes
 		});
+
+		console.log(searchItem);
+		console.log(products);
+		console.log(this.state.newProducts);
 	}
 
 	render() {
-		const { categoriesLoading, productsLoading, categories, products, searchItem } = this.state;
+		const { categoriesLoading, productsLoading, categories, products, searchItem, newProducts } = this.state;
 
 		return (
 			<div className="App">
@@ -94,11 +107,10 @@ class App extends Component {
 							product={searchItem}
 							searchHandler={this.searchProduct}
 						/>
-						<Products itemsFound={products.length}>
-						{productsLoading || !products ?
+						<Products itemsFound={newProducts.length}>
+						{productsLoading ?
 							<ProductLoadingAnim /> :
-							// Each product matches
-							products.map(product =>
+							newProducts.map(product =>
 								<Product
 									viewProduct={null}
 									productImg={product.image}
@@ -107,7 +119,7 @@ class App extends Component {
 									addToCart={null}
 								/>
 							)
-						}		
+						}
 						</Products>
 					</div>
 
