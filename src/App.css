@@ -62,20 +62,21 @@ header ul li a {
 }
 
 .products {
-	width: 800px;
+	/* width: 800px; */
+	/* flex-grow: 1; */
+	width: 100%;
 	box-shadow: 0 1px 1px black;
 }
 
 .cart {
-	border: 1px solid black;
-	flex-grow: 1;
+	min-width: 300px;
 	padding: 20px 0;
 }
 
 .cart > p {
 	font-size: 20px;
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 	letter-spacing: 1px;
 	padding-bottom: 5px;
 }
@@ -86,5 +87,9 @@ header ul li a {
 	height: 3px;
 	width: 50px;
 	background: #f5a23d;
-	margin: 9px auto 0;
+	margin: 5px auto 0;
+}
+
+.cart-items {
+	padding: 0 5px;
 }

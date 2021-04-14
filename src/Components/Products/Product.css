@@ -57,11 +57,19 @@
 	color: white;
 }
 
+.add-quantity:active, .subt-quantity:active {
+	transform: scale(1.1);
+}
+
 .quantity {
 	padding: 0 8px;
 	background: rgb(240, 240, 240);
 	border-radius: 5px;
 	font-size: 90%;
+}
+
+.add-quantity:focus, .subt-quantity:focus, .add-to-cart:focus {
+	outline: none;
 }
 
 .add-to-cart {
@@ -75,6 +83,6 @@
 	color: white;
 }
 
-.add-quantity:focus, .subt-quantity:focus, .add-to-cart:focus {
-	outline: none;
+.add-to-cart:active {
+	background: linear-gradient(to top, #face98, #f5a23d);
 }

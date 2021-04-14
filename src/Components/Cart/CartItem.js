@@ -5,6 +5,7 @@ function CartItem(props) {
 	return (
 		<div className="cart-item">
 			<input type="checkbox" name={props.object} id={props.object} className="toggle-add-to-cart" />
+
 			<div className="item">
 
 				<div className="img-wrapper">
@@ -13,7 +14,7 @@ function CartItem(props) {
 
 				<div className="item-info">
 					<p className="item-title">{props.title}</p>
-					<p className="item-price">{props.price}</p>
+					<p className="item-price">${props.price}</p>
 					<div className="quantity-adjuster">
 						<button className="quantity-increment">+</button>
 						<span className="item-quantity">1</span>
@@ -22,6 +23,7 @@ function CartItem(props) {
 				</div>
 
 			</div>
+
 		</div>
 	);
 }
