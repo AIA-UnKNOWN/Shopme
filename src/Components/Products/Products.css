@@ -5,6 +5,15 @@
 	font-weight: bold;
 }
 
+.result-indicator::after {
+	content: '';
+	display: block;
+	height: 3px;
+	width: 50px;
+	background: #f5a23d;
+	margin: 9px auto 0;
+}
+
 .items {
 	padding: 10px;
 	display: flex;

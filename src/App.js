@@ -7,6 +7,7 @@ import Category from './Components/Category/Category';
 import SearchField from './Components/Products/SearchField';
 import Products from './Components/Products/Products';
 import Product from './Components/Products/Product';
+import CartItem from './Components/Cart/CartItem';
 
 
 
@@ -20,7 +21,8 @@ class App extends Component {
 			categories: [ /* categories */ ],
 			products: [ /* products */ ],
 			searchItem: '',
-			newProducts: []
+			newProducts: [],
+			cart: []
 		};
 		this.searchProduct = this.searchProduct.bind(this);
 	}
@@ -51,7 +53,8 @@ class App extends Component {
 			categories: [],
 			products: [],
 			searchItem: '',
-			newProducts: []
+			newProducts: [],
+			addedToCart: []
 		});
 	}
 
@@ -60,21 +63,17 @@ class App extends Component {
 		const products = this.state.products;
 		const productsLoading = this.state.productsLoading;
 
-		let newProductsRes = products.filter(product => product.title.toLowerCase().includes(searchItem)) || products.description.toLowerCase().includes(searchItem);
+		let newProductsRes = products.filter(product => product.title.toLowerCase().includes(searchItem.toLowerCase())) || products.description.toLowerCase().includes(searchItem);
 
 		this.setState({
 			productsLoading,
 			searchItem,
 			newProducts: newProductsRes
 		});
-
-		console.log(searchItem);
-		console.log(products);
-		console.log(this.state.newProducts);
 	}
 
 	render() {
-		const { categoriesLoading, productsLoading, categories, products, searchItem, newProducts } = this.state;
+		const { categoriesLoading, productsLoading, categories, searchItem, newProducts, cart } = this.state;
 
 		return (
 			<div className="App">
@@ -122,9 +121,14 @@ class App extends Component {
 						}
 						</Products>
 					</div>
-
+					<div className="cart">
+						<p>Cart</p>
+						<div className="cart-items">
+						{cart.map(item => <CartItem />)}
+						</div>
+					</div>
 				</div>
-
+		
 			</div>
 		);
 	}

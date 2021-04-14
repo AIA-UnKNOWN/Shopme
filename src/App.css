@@ -58,10 +58,34 @@ header ul li a {
 	height: 3px;
 	width: 50px;
 	background: #f5a23d;
-	margin: 5px auto 0;
+	margin: 9px auto 0;
 }
 
 .products {
 	width: 800px;
 	box-shadow: 0 1px 1px black;
+}
+
+.cart {
+	border: 1px solid black;
+	height: 100vh;
+	flex-grow: 1;
+	padding: 20px 0;
+}
+
+.cart > p {
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 20px;
+	letter-spacing: 1px;
+	padding-bottom: 5px;
+}
+
+.cart > p::after {
+	content: '';
+	display: block;
+	height: 3px;
+	width: 50px;
+	background: #f5a23d;
+	margin: 9px auto 0;
 }
