@@ -25,6 +25,7 @@ class App extends Component {
 			cart: []
 		};
 		this.searchProduct = this.searchProduct.bind(this);
+		this.addToCartHandler = this.addToCartHandler.bind(this);
 	}
 
 	componentDidMount() {
@@ -54,7 +55,7 @@ class App extends Component {
 			products: [],
 			searchItem: '',
 			newProducts: [],
-			addedToCart: []
+			cart: []
 		});
 	}
 
@@ -69,6 +70,16 @@ class App extends Component {
 			productsLoading,
 			searchItem,
 			newProducts: newProductsRes
+		});
+	}
+
+	addToCartHandler(e) {
+		console.log(e);
+		const target = e.target;
+		const name = target.name;
+
+		this.setState({
+			cart: [...this.state.newProducts]
 		});
 	}
 
@@ -115,7 +126,7 @@ class App extends Component {
 									productImg={product.image}
 									productTitle={product.title}
 									productPrice={product.price}
-									addToCart={null}
+									addToCart={this.addToCartHandler}
 								/>
 							)
 						}
@@ -124,7 +135,15 @@ class App extends Component {
 					<div className="cart">
 						<p>Cart</p>
 						<div className="cart-items">
-						{cart.map(item => <CartItem />)}
+						{cart.map(item =>
+							<CartItem
+								key={item.title.toUpperCase()}
+								object={item}
+								img={item.image}
+								title={item.title}
+								price={item.price}
+							/>)
+						}
 						</div>
 					</div>
 				</div>

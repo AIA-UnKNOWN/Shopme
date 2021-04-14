@@ -68,7 +68,6 @@ header ul li a {
 
 .cart {
 	border: 1px solid black;
-	height: 100vh;
 	flex-grow: 1;
 	padding: 20px 0;
 }
