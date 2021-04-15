@@ -16,7 +16,7 @@ function Product(props) {
 						<button className="subt-quantity">-</button>
 					</span>
 				</div>
-				<button className="add-to-cart" onClick={props.addToCart}>Add to cart</button>
+				<button className="add-to-cart" onClick={props.addToCart} name={props.productTitle}>Add to cart</button>
 			</div>
 		</div>
 	);

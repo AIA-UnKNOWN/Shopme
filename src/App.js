@@ -73,14 +73,26 @@ class App extends Component {
 		});
 	}
 
-	addToCartHandler(e) {
-		console.log(e);
-		const target = e.target;
-		const name = target.name;
+	checkCartDuplicates() {
+		const cart = this.state.cart;
 
-		this.setState({
-			cart: [...this.state.newProducts]
-		});
+		const unDuplicate = null;
+	}
+
+	addToCartHandler(e) {
+		// This checks the duplicate items in cart and merges it numerical values i.e. 'quantity' and 'price'
+		// this.checkCartDuplicate();
+
+		const name = e.target.name;
+		const newProducts = this.state.newProducts;
+		
+		// Gets item and stores it in an array when it matches the item name
+		const cart = newProducts.filter(item => item.title === name);
+
+		// Now lets change the data and push the item to the cart state
+		this.setState(state => ({
+			cart: [...state.cart, ...cart]
+		}));
 	}
 
 	render() {
@@ -122,11 +134,13 @@ class App extends Component {
 							<ProductLoadingAnim /> :
 							newProducts.map(product =>
 								<Product
+									key={product.title.toUpperCase()}
 									viewProduct={null}
 									productImg={product.image}
 									productTitle={product.title}
 									productPrice={product.price}
 									addToCart={this.addToCartHandler}
+									obj={product}
 								/>
 							)
 						}
@@ -137,7 +151,7 @@ class App extends Component {
 						<div className="cart-items">
 						{cart.map(item =>
 							<CartItem
-								key={item.title.toUpperCase()}
+								key={item.title}
 								object={item}
 								img={item.image}
 								title={item.title}

@@ -8,7 +8,7 @@ function SearchField(props) {
 					type="text"
 					name="search-product"
 					id="search-product"
-					placeHolder="Search item"
+					placeholder="Search item"
 					value={props.product}
 					onChange={props.searchHandler}
 				/>
