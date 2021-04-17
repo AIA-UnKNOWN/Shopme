@@ -73,26 +73,52 @@ class App extends Component {
 		});
 	}
 
-	checkCartDuplicates() {
-		const cart = this.state.cart;
-
-		const unDuplicate = null;
-	}
-
 	addToCartHandler(e) {
-		// This checks the duplicate items in cart and merges it numerical values i.e. 'quantity' and 'price'
-		// this.checkCartDuplicate();
-
 		const name = e.target.name;
 		const newProducts = this.state.newProducts;
 		
 		// Gets item and stores it in an array when it matches the item name
-		const cart = newProducts.filter(item => item.title === name);
+		let itemCart = newProducts.filter(item => item.title === name)
 
-		// Now lets change the data and push the item to the cart state
-		this.setState(state => ({
-			cart: [...state.cart, ...cart]
-		}));
+		// Assings it to be a single value
+		itemCart = itemCart[0]
+		
+		// Changes the state for later process
+		const cart = [...this.state.cart, itemCart];
+		this.setState({
+			cart
+		});
+		
+		// Gets the latest state
+		const stateCart = this.state.cart;
+		// Pushes all the items in this array so that we can modify its values
+		// This is where we scan for duplicates items
+		const newCart = [...stateCart];
+		// This is where we store our item for modifying properties
+		let map = {};
+
+		// This checks if the item is already in the dummy cart (newCart)
+		if (newCart.includes(itemCart)) {
+			// Gets the index of the item in newCart for further access
+			const i = newCart.indexOf(itemCart);
+			// Checks if the item has a 'quantity' property and increments it
+			if (newCart[i].quantity) {
+				newCart[i].quantity++;
+			}
+		} else {
+			// If item is not there
+			// It is set to map 
+			// Assigns the quatity value
+			// Then pushes it
+			map = itemCart;
+			map.quantity = 1;
+			newCart.push(map);
+		}
+
+		// Now lets change our data
+		this.setState({
+			cart: newCart
+		});
 	}
 
 	render() {
@@ -104,9 +130,9 @@ class App extends Component {
 				<header>
 					<label className="logo">ShopME</label>
 					<ul>
-						<li><a href="">Home</a></li>
-						<li><a href="">Cart</a></li>
-						<li><a href="">Login</a></li>
+						<li><button onClick={null}>Home</button></li>
+						<li><button onClick={null}>Cart</button></li>
+						<li><button onClick={null}>Login</button></li>
 					</ul>
 					<i className="fas fa-bars"></i>
 				</header>
@@ -140,7 +166,6 @@ class App extends Component {
 									productTitle={product.title}
 									productPrice={product.price}
 									addToCart={this.addToCartHandler}
-									obj={product}
 								/>
 							)
 						}
@@ -156,6 +181,7 @@ class App extends Component {
 								img={item.image}
 								title={item.title}
 								price={item.price}
+								quantity={item.quantity}
 							/>)
 						}
 						</div>

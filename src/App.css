@@ -20,12 +20,17 @@ header ul li {
 	margin-left: 10px;
 }
 
-header ul li a {
+header ul li button {
+	border: none;
 	text-decoration: none;
 	background: rgba(37, 37, 37, 0.452);
 	padding: 8px 15px;
 	color: white;
 	border-radius: 5px;
+}
+
+header ul li button:focus {
+	outline: none;
 }
 
 .content {
@@ -38,7 +43,7 @@ header ul li a {
 
 /* Categories */
 .categories {
-	width: 250px;	
+	min-width: 250px;	
 	height: 100vh;
 	padding: 20px 15px;
 	font-family: 'Noto Sans', sans-serif;
