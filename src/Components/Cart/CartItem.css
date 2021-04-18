@@ -61,6 +61,10 @@
 	color: white;
 }
 
+.quantity-decrement {
+	padding: 2px 9px;
+}
+
 .quantity-increment:focus, .quantity-decrement:focus {
 	outline: none;
 }
