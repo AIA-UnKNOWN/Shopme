@@ -31,6 +31,9 @@ class App extends Component {
 		this.jewelery = this.jewelery.bind(this);
 		this.menclothing = this.menclothing.bind(this);
 		this.womenclothing = this.womenclothing.bind(this);
+		// Cart Items
+		this.itemCartDecrementQuantity = this.itemCartDecrementQuantity.bind(this);
+		this.itemCartIncrementQuantity = this.itemCartIncrementQuantity.bind(this);
 	}
 
 	componentDidMount() {
@@ -162,6 +165,46 @@ class App extends Component {
 		});
 	}
 
+	itemCartDecrementQuantity(e) {
+		const name = e.target.name;
+		const cart = this.state.cart;
+		const modifiedCart = [...cart];
+		let cartItem = modifiedCart.filter(item => item.title === name);
+		cartItem = cartItem[0]
+
+		// Gets the index of the item in cart
+		const i = modifiedCart.indexOf(cartItem);
+
+		// checks if quantity is greater than one so that it can still decrease until it reaches 1
+		if (modifiedCart[i]['quantity'] > 1) {
+			// Decreases the quantity
+		modifiedCart[i]['quantity']--;
+		}
+
+		this.setState({
+			cart: modifiedCart
+		});
+	}
+
+	itemCartIncrementQuantity(e) {
+		const name = e.target.name;
+		const cart = this.state.cart;
+		const modifiedCart = [...cart];
+		let cartItem = modifiedCart.filter(item => item.title === name);
+		cartItem = cartItem[0]
+
+		// Gets the index of the item in cart
+		const i = modifiedCart.indexOf(cartItem);
+
+		// Decreases the quantity
+		modifiedCart[i]['quantity']++;
+		
+
+		this.setState({
+			cart: modifiedCart
+		});
+	}
+
 	render() {
 		const { categoriesLoading, productsLoading, categories, searchItem, newProducts, cart } = this.state;
 
@@ -238,6 +281,8 @@ class App extends Component {
 								title={item.title}
 								price={item.price}
 								quantity={item.quantity}
+								decrementQuantity={this.itemCartDecrementQuantity}
+								incrementQuantity={this.itemCartIncrementQuantity}
 							/>)
 						}
 						</div>

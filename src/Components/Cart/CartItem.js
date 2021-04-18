@@ -16,9 +16,9 @@ function CartItem(props) {
 					<p className="item-title">{props.title}</p>
 					<p className="item-price">${props.price}</p>
 					<div className="quantity-adjuster">
-						<button className="quantity-decrement">-</button>
+						<button onClick={props.decrementQuantity} name={props.object.title} className="quantity-decrement">-</button>
 						<span className="item-quantity">{(props.quantity ? props.quantity : 1)}</span>
-						<button className="quantity-increment">+</button>
+						<button onClick={props.incrementQuantity} name={props.object.title} className="quantity-increment">+</button>
 					</div>
 				</div>
 
