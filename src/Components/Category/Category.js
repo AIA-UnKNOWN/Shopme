@@ -1,9 +1,12 @@
 import './Category.css';
 
 function Category(props) {
+	const value = props.value;
+	const nav = props.nav;
+
 	return (
 		<li>
-			<button className="category">{props.value}</button>
+			<button onClick={nav} className="category">{value}</button>
 		</li>
 	);
 }

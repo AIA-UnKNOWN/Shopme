@@ -26,6 +26,11 @@ class App extends Component {
 		};
 		this.searchProduct = this.searchProduct.bind(this);
 		this.addToCartHandler = this.addToCartHandler.bind(this);
+		// Navs
+		this.electronics = this.electronics.bind(this);
+		this.jewelery = this.jewelery.bind(this);
+		this.menclothing = this.menclothing.bind(this);
+		this.womenclothing = this.womenclothing.bind(this);
 	}
 
 	componentDidMount() {
@@ -56,6 +61,42 @@ class App extends Component {
 			searchItem: '',
 			newProducts: [],
 			cart: []
+		});
+	}
+
+	electronics() {
+		const products = this.state.products;
+		const electronicItems = products.filter(product => product.category === 'electronics');
+
+		this.setState({
+			newProducts: electronicItems
+		});
+	}
+
+	jewelery() {
+		const products = this.state.products;
+		const jeweleryItems = products.filter(product => product.category === 'jewelery');
+
+		this.setState({
+			newProducts: jeweleryItems
+		});
+	}
+
+	menclothing() {
+		const products = this.state.products;
+		const menclothingItems = products.filter(product => product.category === 'men clothing');
+
+		this.setState({
+			newProducts: menclothingItems
+		});
+	}
+
+	womenclothing() {
+		const products = this.state.products;
+		const womenclothingItems = products.filter(product => product.category === 'women clothing');
+
+		this.setState({
+			newProducts: womenclothingItems
 		});
 	}
 
@@ -141,13 +182,28 @@ class App extends Component {
 					<div className="categories">
 						<p>Categories</p>
 						<ul>
-						{categoriesLoading || !categories ? <CategoryLoadingAnim /> :
-						categories.map(category =>
-							<Category
-								key={category.toUpperCase()}
-								value={category}
-							/>)
-						}
+						{categoriesLoading || !categories ? <CategoryLoadingAnim /> : 
+						categories.map(category => {
+							let destination;
+
+							if (category === 'electronics') {
+								destination = this.electronics;
+							} else if (category === 'jewelery') {
+								destination = this.jewelery;
+							} else if (category === 'men clothing') {
+								destination = this.menclothing;
+							} else if (category === 'women clothing') {
+								destination = this.womenclothing;
+							}
+							
+							return (
+								<Category
+									key={category}
+									value={category}
+									nav={destination}
+								/>
+							)
+						})}
 						</ul>
 					</div>
 					<div className="products">
