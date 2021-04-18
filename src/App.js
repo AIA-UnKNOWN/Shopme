@@ -32,6 +32,7 @@ class App extends Component {
 		this.menclothing = this.menclothing.bind(this);
 		this.womenclothing = this.womenclothing.bind(this);
 		// Cart Items
+		this.onSelectItem = this.onSelectItem.bind(this);
 		this.itemCartDecrementQuantity = this.itemCartDecrementQuantity.bind(this);
 		this.itemCartIncrementQuantity = this.itemCartIncrementQuantity.bind(this);
 	}
@@ -156,6 +157,8 @@ class App extends Component {
 			// Then pushes it
 			map = itemCart;
 			map.quantity = 1;
+			// Adds another property for selection
+			map.isSelected = false;
 			newCart.push(map);
 		}
 
@@ -163,6 +166,29 @@ class App extends Component {
 		this.setState({
 			cart: newCart
 		});
+	}
+
+	onSelectItem(e) {
+		const cart = this.state.cart;
+		const name = e.target.name;
+		const dummyCart = [...cart];
+
+		let item = dummyCart.filter(item => item.title === name);
+		item = item[0];
+
+		// Checks if the item has 'isSelected' property
+		const i = dummyCart.indexOf(item);
+
+		// Reverses the value everytime the user checks it
+		// for ex., if true, it will become false and vice versa
+		dummyCart[i]['isSelected'] = !dummyCart[i]['isSelected'];
+
+		this.setState({
+			cart: dummyCart
+		});
+
+
+		console.log(this.state.cart)
 	}
 
 	itemCartDecrementQuantity(e) {
@@ -276,6 +302,8 @@ class App extends Component {
 						{cart.map(item =>
 							<CartItem
 								key={item.title}
+								isSelected={item.isSelected}
+								onSelect={this.onSelectItem}
 								object={item}
 								img={item.image}
 								title={item.title}
@@ -286,6 +314,7 @@ class App extends Component {
 							/>)
 						}
 						</div>
+
 					</div>
 				</div>
 		

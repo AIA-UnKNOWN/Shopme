@@ -4,7 +4,10 @@ import './CartItem.css';
 function CartItem(props) {
 	return (
 		<div className="cart-item">
-			<input type="checkbox" name={props.object} id={props.object} className="toggle-add-to-cart" />
+			<input type="checkbox" name={props.object.title} id={props.object.title} onChange={props.onSelect}
+				className="toggle-add-to-cart"
+				checked={props.isSelected}
+			/>
 
 			<div className="item">
 
