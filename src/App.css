@@ -76,8 +76,6 @@ header ul li button:focus {
 }
 
 .products {
-	/* width: 800px; */
-	/* flex-grow: 1; */
 	width: 100%;
 	box-shadow: 0 1px 1px black;
 }
@@ -109,9 +107,12 @@ header ul li button:focus {
 	margin: 5px auto 0;
 }
 
+.cart-items-container {
+	background: white;
+}
+
 .cart-items {
 	padding: 0 5px;
-	background: white;
 }
 
 
@@ -125,10 +126,6 @@ header ul li button:focus {
 		flex-wrap: wrap;
 	}
 
-	/* .content > div {
-
-	} */
-
 	.categories, .cart {
 		background: white;
 		width: 47%;
@@ -140,11 +137,17 @@ header ul li button:focus {
 		margin: 5px 10px;
 		border-radius: 10px;
 		transition: all .3s;
+		backdrop-filter: blur(10px);
 	}
 
 	.categories:hover, .cart:hover {
-		background: #f5a23d;
+		/* background: #f5a23d; */
+		background: #f5a23dc4;
 		color: white;
+	}
+
+	.cart:hover .cart-item {
+		color: black;
 	}
 
 	.categories {
@@ -171,7 +174,7 @@ header ul li button:focus {
 		width: 100%;
 	}
 
-	#toggleCart:checked ~ ul {
+	#toggleCart:checked ~ .cart-items-container {
 		display: none;
 	}
 
@@ -193,11 +196,20 @@ header ul li button:focus {
 		display: none;
 	}
 
+	.cart-items-container {
+		display: block;
+		width: 100%;
+		background: white;
+		max-height: 500px;
+		overflow-y: auto;
+		padding: 10px 5px;
+	}
+
 	.cart-items {
 		display: block;
 	}
 
-	.categories ul, .cart .cart-items {
+	.categories ul, .cart-items-container {
 		position: absolute;
 		margin-top: 25px;
 	}

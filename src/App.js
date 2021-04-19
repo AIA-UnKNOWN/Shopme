@@ -250,7 +250,7 @@ class App extends Component {
 
 					<div className="categories">
 						<input type="checkbox" name="toggleCategories" id="toggleCategories" />
-						<label for="toggleCategories">Categories</label>
+						<label htmlFor="toggleCategories">Categories</label>
 						<ul>
 						{categoriesLoading || !categories ? <CategoryLoadingAnim /> : 
 						categories.map(category => {
@@ -299,22 +299,24 @@ class App extends Component {
 					</div>
 					<div className="cart">
 						<input type="checkbox" name="toggleCart" id="toggleCart" />
-						<label for="toggleCart">Cart</label>
-						<div className="cart-items">
-						{cart.map(item =>
-							<CartItem
-								key={item.title}
-								isSelected={item.isSelected}
-								onSelect={this.onSelectItem}
-								object={item}
-								img={item.image}
-								title={item.title}
-								price={item.price}
-								quantity={item.quantity}
-								decrementQuantity={this.itemCartDecrementQuantity}
-								incrementQuantity={this.itemCartIncrementQuantity}
-							/>)
-						}
+						<label htmlFor="toggleCart">Cart</label>
+						<div className="cart-items-container">
+							<div className="cart-items">
+							{cart.map(item =>
+								<CartItem
+									key={item.title}
+									isSelected={item.isSelected}
+									onSelect={this.onSelectItem}
+									object={item}
+									img={item.image}
+									title={item.title}
+									price={item.price}
+									quantity={item.quantity}
+									decrementQuantity={this.itemCartDecrementQuantity}
+									incrementQuantity={this.itemCartIncrementQuantity}
+								/>)
+							}
+							</div>
 						</div>
 
 					</div>
