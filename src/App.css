@@ -49,7 +49,12 @@ header ul li button:focus {
 	font-family: 'Noto Sans', sans-serif;
 }
 
-.categories p {
+#toggleCategories {
+	display: none;
+}
+
+.categories label {
+	display: block;
 	font-size: 20px;
 	text-align: center;
 	margin-bottom: 20px;
@@ -57,13 +62,17 @@ header ul li button:focus {
 	padding-bottom: 5px;
 }
 
-.categories p::after {
+.categories label::after {
 	content: '';
 	display: block;
 	height: 3px;
 	width: 50px;
 	background: #f5a23d;
 	margin: 9px auto 0;
+}
+
+.categories ul {
+	background: white;
 }
 
 .products {
@@ -78,7 +87,12 @@ header ul li button:focus {
 	padding: 20px 0;
 }
 
-.cart > p {
+#toggleCart {
+	display: none;
+}
+
+.cart > label {
+	display: block;
 	font-size: 20px;
 	text-align: center;
 	margin-bottom: 15px;
@@ -86,7 +100,7 @@ header ul li button:focus {
 	padding-bottom: 5px;
 }
 
-.cart > p::after {
+.cart > label::after {
 	content: '';
 	display: block;
 	height: 3px;
@@ -97,4 +111,99 @@ header ul li button:focus {
 
 .cart-items {
 	padding: 0 5px;
+	background: white;
+}
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 896px) {
+
+	.content {
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	/* .content > div {
+
+	} */
+
+	.categories, .cart {
+		background: white;
+		width: 47%;
+		position: sticky;
+		position: -webkit-sticky;
+		top: 5px;
+		left: 0;
+		z-index: 5;
+		margin: 5px 10px;
+		border-radius: 10px;
+		transition: all .3s;
+	}
+
+	.categories:hover, .cart:hover {
+		background: #f5a23d;
+		color: white;
+	}
+
+	.categories {
+		order: 1;
+		height: fit-content;
+		padding: 20px 0;
+	}
+
+	#toggleCategories:checked ~ ul {
+		display: block;
+	}
+
+	.categories label {
+		margin: 0;
+		padding: 0;
+	}
+
+	.categories label::after {
+		display: none;
+	}
+
+	.categories ul {
+		display: none;
+		width: 100%;
+	}
+
+	#toggleCart:checked ~ ul {
+		display: none;
+	}
+
+	.products {
+		order: 3;
+		width: 100%;
+	}
+
+	.cart {
+		order: 2;
+	}
+
+	.cart label {
+		margin: 0;
+		padding: 0;
+	}
+
+	.cart label::after {
+		display: none;
+	}
+
+	.cart-items {
+		display: block;
+	}
+
+	.categories ul, .cart .cart-items {
+		position: absolute;
+		margin-top: 25px;
+	}
+
+	#toggleCart:checked ~ .cart-items {
+		display: none;
+	}
+
 }

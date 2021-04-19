@@ -249,7 +249,8 @@ class App extends Component {
 				<div className="content">
 
 					<div className="categories">
-						<p>Categories</p>
+						<input type="checkbox" name="toggleCategories" id="toggleCategories" />
+						<label for="toggleCategories">Categories</label>
 						<ul>
 						{categoriesLoading || !categories ? <CategoryLoadingAnim /> : 
 						categories.map(category => {
@@ -297,7 +298,8 @@ class App extends Component {
 						</Products>
 					</div>
 					<div className="cart">
-						<p>Cart</p>
+						<input type="checkbox" name="toggleCart" id="toggleCart" />
+						<label for="toggleCart">Cart</label>
 						<div className="cart-items">
 						{cart.map(item =>
 							<CartItem
