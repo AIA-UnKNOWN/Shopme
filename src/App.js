@@ -29,6 +29,7 @@ class App extends Component {
 		this.searchProduct = this.searchProduct.bind(this);
 		this.addToCartHandler = this.addToCartHandler.bind(this);
 		// Navs
+		this.allProducts = this.allProducts.bind(this);
 		this.electronics = this.electronics.bind(this);
 		this.jewelery = this.jewelery.bind(this);
 		this.menclothing = this.menclothing.bind(this);
@@ -71,6 +72,12 @@ class App extends Component {
 			newProducts: [],
 			cart: [],
 			notification: ''
+		});
+	}
+
+	allProducts() {
+		this.setState({
+			newProducts: this.state.products
 		});
 	}
 
@@ -331,6 +338,11 @@ class App extends Component {
 						<input type="checkbox" name="toggleCategories" id="toggleCategories" />
 						<label htmlFor="toggleCategories">Categories</label>
 						<ul>
+							<Category
+								key="allproducts"
+								value="ALL"
+								nav={this.allProducts}
+							/>
 						{categoriesLoading || !categories ? <CategoryLoadingAnim /> : 
 						categories.map(category => {
 							let destination;
