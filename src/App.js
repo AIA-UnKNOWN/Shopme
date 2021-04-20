@@ -231,6 +231,28 @@ class App extends Component {
 		});
 	}
 
+	totalItemCartAmount() {
+		const cart = this.state.cart;
+		const dummyCart = cart.map(item => item.price * item.quantity);
+		let totalAmount;
+
+		if (cart == false) {
+			totalAmount = 0;
+		} else {
+			totalAmount = dummyCart.reduce((previous, current) => previous + current);
+		}
+		
+		return totalAmount;
+	}
+
+	deleteSelectedCartItem() {
+
+	}
+
+	checkoutSelectedCartItem() {
+
+	}
+
 	render() {
 		const { categoriesLoading, productsLoading, categories, searchItem, newProducts, cart } = this.state;
 
@@ -320,7 +342,7 @@ class App extends Component {
 							<div className="process-cart-items">
 								<div className="calculations">
 									<span className="total-label">Total:</span>
-									<span className="total-amount">${100}</span>
+									<span className="total-amount">${this.totalItemCartAmount()}</span>
 								</div>
 								<button onClick={null} className="remove-items">
 									<i class="fas fa-trash-alt"></i>
