@@ -233,10 +233,11 @@ class App extends Component {
 
 	totalItemCartAmount() {
 		const cart = this.state.cart;
-		const dummyCart = cart.map(item => item.price * item.quantity);
+		const selectedItems = cart.filter(item => item.isSelected);
+		const dummyCart = selectedItems.map(item => item.price * item.quantity);
 		let totalAmount;
 
-		if (cart == false) {
+		if (dummyCart == false) {
 			totalAmount = 0;
 		} else {
 			totalAmount = dummyCart.reduce((previous, current) => previous + current);
