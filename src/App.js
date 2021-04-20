@@ -275,7 +275,7 @@ class App extends Component {
 			totalAmount = dummyCart.reduce((previous, current) => previous + current);
 		}
 		
-		return totalAmount;
+		return totalAmount.toFixed(2);
 	}
 
 	deleteSelectedCartItem() {
