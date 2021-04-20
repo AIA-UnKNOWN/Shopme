@@ -317,8 +317,19 @@ class App extends Component {
 								/>)
 							}
 							</div>
+							<div className="process-cart-items">
+								<div className="calculations">
+									<span className="total-label">Total:</span>
+									<span className="total-amount">${100}</span>
+								</div>
+								<button onClick={null} className="remove-items">
+									<i class="fas fa-trash-alt"></i>
+								</button>
+								<button onClick={null} className="buy-items">
+									<i class="fas fa-shopping-cart"></i>
+								</button>
+							</div>
 						</div>
-
 					</div>
 				</div>
 		
