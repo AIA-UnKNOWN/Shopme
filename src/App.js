@@ -8,6 +8,7 @@ import SearchField from './Components/Products/SearchField';
 import Products from './Components/Products/Products';
 import Product from './Components/Products/Product';
 import CartItem from './Components/Cart/CartItem';
+import Notification from './Components/Notification/Notification';
 
 
 
@@ -22,7 +23,8 @@ class App extends Component {
 			products: [ /* products */ ],
 			searchItem: '',
 			newProducts: [],
-			cart: []
+			cart: [],
+			notification: ''
 		};
 		this.searchProduct = this.searchProduct.bind(this);
 		this.addToCartHandler = this.addToCartHandler.bind(this);
@@ -36,6 +38,8 @@ class App extends Component {
 		this.onSelectItem = this.onSelectItem.bind(this);
 		this.itemCartDecrementQuantity = this.itemCartDecrementQuantity.bind(this);
 		this.itemCartIncrementQuantity = this.itemCartIncrementQuantity.bind(this);
+		this.deleteSelectedCartItem = this.deleteSelectedCartItem.bind(this);
+		this.checkoutSelectedCartItem = this.checkoutSelectedCartItem.bind(this);
 	}
 
 	componentDidMount() {
@@ -65,7 +69,8 @@ class App extends Component {
 			products: [],
 			searchItem: '',
 			newProducts: [],
-			cart: []
+			cart: [],
+			notification: ''
 		});
 	}
 
@@ -279,19 +284,38 @@ class App extends Component {
 	}
 
 	deleteSelectedCartItem() {
+		const cart = this.state.cart;
+		const itemsLeft = cart.filter(item => !item.isSelected);
+		const selectedItems = cart.filter(item => item.isSelected);
+		
+		// Delete selected items and replace cart with the unselected ones
+		this.setState({
+			cart: itemsLeft,
+			notification: `${selectedItems.length} item/s deleted.`
+		});
 
+		// Styling notification UI for pop up
+		const notification = document.querySelector('#notification');
+		notification.style.top = '10px';
+
+		// Counts down then pop up will disappear
+		let timerID = setTimeout(function() {
+			notification.style.top = '-100%';
+			clearTimeout(timerID);
+		}, 3000);
 	}
 
 	checkoutSelectedCartItem() {
-
+		
 	}
 
 	render() {
-		const { categoriesLoading, productsLoading, categories, searchItem, newProducts, cart } = this.state;
+		const { categoriesLoading, productsLoading, categories, searchItem, newProducts, cart, notification } = this.state;
 
 		return (
 			<div className="App">
 				
+				<Notification text={notification} />
 				<header>
 					<label className="logo">ShopME</label>
 					<ul>
@@ -382,7 +406,7 @@ class App extends Component {
 									<span className="total-label">Total:</span>
 									<span className="total-amount">${this.totalItemCartAmount()}</span>
 								</div>
-								<button onClick={null} className="remove-items">
+								<button onClick={this.deleteSelectedCartItem} className="remove-items">
 									<i class="fas fa-trash-alt"></i>
 								</button>
 								<button onClick={null} className="buy-items">

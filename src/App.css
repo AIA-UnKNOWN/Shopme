@@ -1,3 +1,5 @@
+
+
 header {
 	padding: 20px 30px;
 	display: flex;
@@ -171,6 +173,11 @@ header ul li button:focus {
 .remove-items:focus,
 .buy-items:focus {
 	outline: none;
+}
+
+.remove-items:active,
+.buy-items:active {
+	opacity: 0.8;
 }
 
 .select-all {
