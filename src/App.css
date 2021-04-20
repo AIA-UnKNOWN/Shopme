@@ -173,6 +173,29 @@ header ul li button:focus {
 	outline: none;
 }
 
+.select-all {
+	position: sticky;
+	bottom: 50px;
+	box-shadow: 0 0 1px black;
+	padding: 2px 10px;
+	font-size: 14px;
+	background: white;
+}
+
+.select-all input {
+	margin-right: 5px;
+}
+
+.select-all label {
+	letter-spacing: 1px;
+}
+
+.items-selected {
+	float: right;
+	font-weight: bold;
+	font-size: 13px;
+}
+
 
 
 
@@ -289,6 +312,10 @@ header ul li button:focus {
 
 	#toggleCart:checked ~ .cart-items {
 		display: none;
+	}
+
+	.select-all {
+		color: black;
 	}
 
 }

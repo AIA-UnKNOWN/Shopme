@@ -32,6 +32,7 @@ class App extends Component {
 		this.menclothing = this.menclothing.bind(this);
 		this.womenclothing = this.womenclothing.bind(this);
 		// Cart Items
+		this.selectAllItemCart = this.selectAllItemCart.bind(this);
 		this.onSelectItem = this.onSelectItem.bind(this);
 		this.itemCartDecrementQuantity = this.itemCartDecrementQuantity.bind(this);
 		this.itemCartIncrementQuantity = this.itemCartIncrementQuantity.bind(this);
@@ -168,6 +169,40 @@ class App extends Component {
 		});
 	}
 
+	selectAllItemCart(e) {
+		const cart = this.state.cart;
+		const checked = e.target.checked;
+
+		let allSelected;
+
+		// Checks if the select all is checked
+		if (checked) {
+			// If checked, all the items are selected
+			allSelected = cart.map(item => {
+				item.isSelected = true;
+				return item;
+			});
+		} else {
+			// IF not, all the items are unselected
+			allSelected = cart.map(item => {
+				item.isSelected = false;
+				return item;
+			});
+		}
+
+		this.setState({
+			cart: allSelected
+		});
+	}
+
+	allItemSelected() {
+		const cart = this.state.cart;
+		const selectedItems = cart.filter(item => item.isSelected);
+		let items = selectedItems.length;
+
+		return items;
+	}
+
 	onSelectItem(e) {
 		const cart = this.state.cart;
 		const name = e.target.name;
@@ -186,9 +221,6 @@ class App extends Component {
 		this.setState({
 			cart: dummyCart
 		});
-
-
-		console.log(this.state.cart)
 	}
 
 	itemCartDecrementQuantity(e) {
@@ -339,6 +371,11 @@ class App extends Component {
 									incrementQuantity={this.itemCartIncrementQuantity}
 								/>)
 							}
+							</div>
+							<div className="select-all">
+								<input type="checkbox" name="select-all-item" id="select-all-item" onChange={this.selectAllItemCart} />
+								<label htmlFor="select-all-item">Select All</label>
+								<span className="items-selected">({this.allItemSelected()})</span>
 							</div>
 							<div className="process-cart-items">
 								<div className="calculations">
