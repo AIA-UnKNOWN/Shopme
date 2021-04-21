@@ -299,12 +299,20 @@ class App extends Component {
 		const cart = this.state.cart;
 		const itemsLeft = cart.filter(item => !item.isSelected);
 		const selectedItems = cart.filter(item => item.isSelected);
+
+		if (!selectedItems.length) {
+			// Delete selected items and replace cart with the unselected ones
+			this.setState({
+				notification: `No selected item/s.`
+			});
+		} else {
+			// Delete selected items and replace cart with the unselected ones
+			this.setState({
+				cart: itemsLeft,
+				notification: `${selectedItems.length} item/s deleted.`
+			});
+		}
 		
-		// Delete selected items and replace cart with the unselected ones
-		this.setState({
-			cart: itemsLeft,
-			notification: `${selectedItems.length} item/s deleted.`
-		});
 
 		// Styling notification UI for pop up
 		const notification = document.querySelector('#notification');
@@ -323,9 +331,15 @@ class App extends Component {
 		const cart = this.state.cart;
 		const selectedItems = cart.filter(item => item.isSelected);
 		
-		this.setState({
-			notification: `You successfully bought ${selectedItems.length} item/s.`
-		});
+		if (!selectedItems.length) {
+			this.setState({
+				notification: `No item/s selected.`
+			});
+		} else {
+			this.setState({
+				notification: `You successfully bought ${selectedItems.length} item/s.`
+			});
+		}
 
 		// Styling notification UI for pop up
 		const notification = document.querySelector('#notification');
