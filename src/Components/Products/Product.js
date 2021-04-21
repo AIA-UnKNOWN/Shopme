@@ -2,12 +2,12 @@ import './Product.css';
 
 function Product(props) {
 	return (
-		<div className="product" onClick={props.viewProduct}>
+		<div className="product">
 			<div className="img-wrapper">
 				<img src={props.productImg} alt={props.productTitle} />
 			</div>
 			<div className="product-info">
-				<p className="title">{props.productTitle}</p>
+				<p className="title" onClick={props.viewProduct} id={props.productTitle}>{props.productTitle}</p>
 				<div className="price-quantity">
 					<span className="price">${props.productPrice}</span>
 					<span className="quantity-wrapper">

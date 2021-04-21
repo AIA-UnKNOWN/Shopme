@@ -29,6 +29,7 @@
 	font-weight: bold;
 	font-size: 14px;
 	overflow: hidden;
+	cursor: pointer;
 }
 
 .price-quantity {

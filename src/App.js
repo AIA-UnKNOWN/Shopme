@@ -1,5 +1,6 @@
 import './App.css';
 import { Component } from "react";
+import { render } from "react-dom";
 
 import CategoryLoadingAnim from './Animations/CategoryLoadingAnim';
 import ProductLoadingAnim from './Animations/ProductLoadingAnim';
@@ -9,6 +10,7 @@ import Products from './Components/Products/Products';
 import Product from './Components/Products/Product';
 import CartItem from './Components/Cart/CartItem';
 import Notification from './Components/Notification/Notification';
+import ProductView from './Components/Products/ProductView';
 
 
 
@@ -28,6 +30,8 @@ class App extends Component {
 		};
 		this.searchProduct = this.searchProduct.bind(this);
 		this.addToCartHandler = this.addToCartHandler.bind(this);
+		this.viewProduct = this.viewProduct.bind(this);
+		this.exitViewProduct = this.exitViewProduct.bind(this);
 		// Navs
 		this.allProducts = this.allProducts.bind(this);
 		this.electronics = this.electronics.bind(this);
@@ -316,6 +320,26 @@ class App extends Component {
 		
 	}
 
+	exitViewProduct() {
+		const container = document.querySelector('#view-product');
+		container.style.display = 'none';
+	}
+
+	viewProduct(e) {
+		const products = this.state.newProducts;
+		const id = e.target.id;
+		let item = products.filter(item => item.title === id);
+		item = item[0];
+
+		// Gets the container
+		const container = document.querySelector('#view-product');
+		container.style.display = 'block';
+		render(
+			<ProductView product={item} onExit={this.exitViewProduct} />,
+			container
+		);
+	}
+
 	render() {
 		const { categoriesLoading, productsLoading, categories, searchItem, newProducts, cart, notification } = this.state;
 
@@ -323,6 +347,7 @@ class App extends Component {
 			<div className="App">
 				
 				<Notification text={notification} />
+				<div id="view-product"></div>
 				<header>
 					<label className="logo">ShopME</label>
 					<ul>
@@ -378,7 +403,7 @@ class App extends Component {
 							newProducts.map(product =>
 								<Product
 									key={product.title.toUpperCase()}
-									viewProduct={null}
+									viewProduct={this.viewProduct}
 									productImg={product.image}
 									productTitle={product.title}
 									productPrice={product.price}
