@@ -106,7 +106,7 @@ class App extends Component {
 
 	menclothing() {
 		const products = this.state.products;
-		const menclothingItems = products.filter(product => product.category === 'men clothing');
+		const menclothingItems = products.filter(product => product.category === "men's clothing");
 
 		this.setState({
 			newProducts: menclothingItems
@@ -115,7 +115,7 @@ class App extends Component {
 
 	womenclothing() {
 		const products = this.state.products;
-		const womenclothingItems = products.filter(product => product.category === 'women clothing');
+		const womenclothingItems = products.filter(product => product.category === "women's clothing");
 
 		this.setState({
 			newProducts: womenclothingItems
@@ -428,9 +428,9 @@ class App extends Component {
 								destination = this.electronics;
 							} else if (category === 'jewelery') {
 								destination = this.jewelery;
-							} else if (category === 'men clothing') {
+							} else if (category === "men's clothing") {
 								destination = this.menclothing;
-							} else if (category === 'women clothing') {
+							} else if (category === "women's clothing") {
 								destination = this.womenclothing;
 							}
 							
