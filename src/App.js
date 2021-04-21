@@ -32,6 +32,7 @@ class App extends Component {
 		this.addToCartHandler = this.addToCartHandler.bind(this);
 		this.viewProduct = this.viewProduct.bind(this);
 		this.exitViewProduct = this.exitViewProduct.bind(this);
+		this.buyItem = this.buyItem.bind(this);
 		// Navs
 		this.allProducts = this.allProducts.bind(this);
 		this.electronics = this.electronics.bind(this);
@@ -308,6 +309,8 @@ class App extends Component {
 		// Styling notification UI for pop up
 		const notification = document.querySelector('#notification');
 		notification.style.top = '10px';
+		notification.style.background = '#fcdddd';
+		notification.style.color = '#ce0606';
 
 		// Counts down then pop up will disappear
 		let timerID = setTimeout(function() {
@@ -317,12 +320,49 @@ class App extends Component {
 	}
 
 	checkoutSelectedCartItem() {
+		const cart = this.state.cart;
+		const selectedItems = cart.filter(item => item.isSelected);
 		
+		this.setState({
+			notification: `You successfully bought ${selectedItems.length} item/s.`
+		});
+
+		// Styling notification UI for pop up
+		const notification = document.querySelector('#notification');
+		notification.style.top = '10px';
+		notification.style.background = '#aaf7a6';
+		notification.style.color = '#033d00';
+
+		// Counts down then pop up will disappear
+		let timerID = setTimeout(function() {
+			notification.style.top = '-100%';
+			clearTimeout(timerID);
+		}, 3000);
 	}
 
 	exitViewProduct() {
 		const container = document.querySelector('#view-product');
 		container.style.display = 'none';
+	}
+
+	buyItem(e) {
+		const name = e.target.name;
+
+		this.setState({
+			notification: `You successfully bought "${name}"`
+		});
+
+		// Styling notification UI for pop up
+		const notification = document.querySelector('#notification');
+		notification.style.top = '10px';
+		notification.style.background = '#aaf7a6';
+		notification.style.color = '#033d00';
+
+		// Counts down then pop up will disappear
+		let timerID = setTimeout(function() {
+			notification.style.top = '-100%';
+			clearTimeout(timerID);
+		}, 3000);
 	}
 
 	viewProduct(e) {
@@ -335,7 +375,7 @@ class App extends Component {
 		const container = document.querySelector('#view-product');
 		container.style.display = 'block';
 		render(
-			<ProductView product={item} onExit={this.exitViewProduct} />,
+			<ProductView product={item} onExit={this.exitViewProduct} onBuy={this.buyItem} />,
 			container
 		);
 	}
@@ -351,9 +391,7 @@ class App extends Component {
 				<header>
 					<label className="logo">ShopME</label>
 					<ul>
-						<li><button onClick={null}>Home</button></li>
-						<li><button onClick={null}>Cart</button></li>
-						<li><button onClick={null}>Login</button></li>
+						<li><button onClick={null}>Credits</button></li>
 					</ul>
 					<i className="fas fa-bars"></i>
 				</header>
@@ -446,7 +484,7 @@ class App extends Component {
 								<button onClick={this.deleteSelectedCartItem} className="remove-items">
 									<i class="fas fa-trash-alt"></i>
 								</button>
-								<button onClick={null} className="buy-items">
+								<button onClick={this.checkoutSelectedCartItem} className="buy-items">
 									<i class="fas fa-shopping-cart"></i>
 								</button>
 							</div>

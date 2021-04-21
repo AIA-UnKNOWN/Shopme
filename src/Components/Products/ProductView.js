@@ -9,6 +9,7 @@ function ProductView(props) {
 			<span className="X" onClick={props.onExit}>
 				<i class="fas fa-times"></i>
 			</span>
+
 			<div className="view-product">
 				<div className="image-container">
 					<img src={product.image} alt={product.title} />
@@ -18,7 +19,7 @@ function ProductView(props) {
 					<p className="description">{product.description}</p>
 					<div className="price-buynow">
 						<span>${product.price}</span>
-						<button>Buy Now</button>
+						<button onClick={props.onBuy} name={product.title}>Buy Now</button>
 					</div>
 				</div>
 			</div>

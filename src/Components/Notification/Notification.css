@@ -1,18 +1,15 @@
 #notification {
 	position: fixed;
-	z-index: 12;
+	z-index: 20;
 	top: -100%;
 	left: 50%;
 	transform: translateX(-50%);
-	/* border: 1px solid black; */
 	display: inline-block;
 	border-radius: 5px;
-	padding: 10px 0;
+	padding: 10px 5px;
 	font-size: 14px;
 	width: 330px;
 	font-weight: bold;
 	text-align: center;
-	background: #fcdddd;
-	color: #ce0606;
 	transition: top .5s;
 }
