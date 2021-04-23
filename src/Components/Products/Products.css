@@ -21,3 +21,14 @@
 	flex-wrap: wrap;
 	background: rgba(245, 245, 244, 0.432);
 }
+
+
+
+@media (max-width: 599px) {
+
+	.items {
+		padding: 0;
+		
+	}
+
+}

@@ -1,3 +1,7 @@
+body::-webkit-scrollbar {
+	display: none;
+}
+
 #view-product {
 	display: none;
 	position: fixed;
@@ -214,6 +218,80 @@ header ul li button:focus {
 
 
 
+@media (max-width: 599px) {
+
+	.content {
+		flex-wrap: wrap;
+	}
+
+	.categories {
+		order: 1;
+		height: fit-content;
+		padding: 0;
+		margin: 5px;
+	}
+
+	.categories label {
+		margin: 0;
+		padding: 20px 0;
+		background: #f5a23dc4;
+		color: white;
+		font-weight: bold;
+		border-radius: 5px;
+	}
+
+	.categories label::after {
+		display: none;
+	}
+
+	.cart {
+		order: 2;
+		margin: 0 5px 5px;
+		padding: 0;
+	}
+
+	.cart > label {
+		background: #f5a23dc4;
+		color: white;
+		padding: 20px 0;
+		font-weight: bold;
+		margin: 0;
+	}
+
+	.cart label::after {
+		display: none;
+	}
+
+	.products {
+		order: 3;
+	}
+
+	.categories, .cart {
+		width: 100%;
+	}
+
+	.categories ul {
+		height: 0;
+		overflow: hidden;
+		transition: all 1s;
+		opacity: 0;
+		z-index: 15;
+	}
+
+	#toggleCategories:checked ~ ul {
+		height: 235px;
+		opacity: 1;
+	}
+
+	.cart-items-container {
+		display: none;
+	}
+
+	#toggleCart:checked ~ .cart-items-container {
+		display: block;
+	}
+
+}
 
 
 @media (min-width: 600px) and (max-width: 900px) {

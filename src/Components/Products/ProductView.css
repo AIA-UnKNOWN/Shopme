@@ -105,3 +105,12 @@
 .price-buynow button:focus {
 	outline: none;
 }
+
+
+@media (max-width: 599px) {
+
+	.view-product {
+		width: 95%;
+	}
+
+}
