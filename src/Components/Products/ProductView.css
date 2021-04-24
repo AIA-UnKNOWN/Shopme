@@ -107,14 +107,14 @@
 }
 
 
-@media (max-width: 599px) {
+@media (max-width: 900px) {
 
 	.X {
 		right: 20px;
 	}
 
 	.view-product {
-		width: 95%;
+		max-width: 95%;
 		padding: 10px;
 		flex-direction: column;
 	}
