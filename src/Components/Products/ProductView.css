@@ -109,8 +109,29 @@
 
 @media (max-width: 599px) {
 
+	.X {
+		right: 20px;
+	}
+
 	.view-product {
 		width: 95%;
+		padding: 10px;
+		flex-direction: column;
+	}
+
+	.view-product .item-infos {
+		width: 100%;
+		height: 250px
+	}
+
+	.view-product .image-container {
+		width: 100%;
+		height: 200px;
+		margin-bottom: 10px;
+	}
+
+	.view-product .description {
+		height: 140px;
 	}
 
 }

@@ -398,7 +398,7 @@ class App extends Component {
 		const { categoriesLoading, productsLoading, categories, searchItem, newProducts, cart, notification } = this.state;
 
 		return (
-			<div className="App">
+			<div className="App" id="App">
 				
 				<Notification text={notification} />
 				<div id="view-product"></div>
@@ -505,6 +505,9 @@ class App extends Component {
 						</div>
 					</div>
 				</div>
+				<a className="go-to-top" href="#App">
+					<i class="fas fa-chevron-up"></i>
+				</a>
 		
 			</div>
 		);
