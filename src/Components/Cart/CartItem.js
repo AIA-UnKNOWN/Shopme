@@ -8,7 +8,7 @@ function CartItem(props) {
 				className="toggle-add-to-cart"
 				checked={props.isSelected}
 			/>
-
+			
 			<div className="item">
 
 				<div className="img-wrapper">
