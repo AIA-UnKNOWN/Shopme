@@ -107,7 +107,7 @@
 }
 
 
-/* @media (max-width: 900px) {
+@media (max-width: 900px) {
 
 	.X {
 		right: 20px;
@@ -134,4 +134,4 @@
 		height: 140px;
 	}
 
-} */
+}
