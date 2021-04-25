@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Shopme/static/css/main.6422a4d8.chunk.css",
+    "main.css": "/Shopme/static/css/main.16b02574.chunk.css",
     "main.js": "/Shopme/static/js/main.a92230ab.chunk.js",
     "main.js.map": "/Shopme/static/js/main.a92230ab.chunk.js.map",
     "runtime-main.js": "/Shopme/static/js/runtime-main.f86e1bd4.js",
@@ -10,13 +10,13 @@
     "static/js/3.b4c7d016.chunk.js": "/Shopme/static/js/3.b4c7d016.chunk.js",
     "static/js/3.b4c7d016.chunk.js.map": "/Shopme/static/js/3.b4c7d016.chunk.js.map",
     "index.html": "/Shopme/index.html",
-    "static/css/main.6422a4d8.chunk.css.map": "/Shopme/static/css/main.6422a4d8.chunk.css.map",
+    "static/css/main.16b02574.chunk.css.map": "/Shopme/static/css/main.16b02574.chunk.css.map",
     "static/js/2.53becc15.chunk.js.LICENSE.txt": "/Shopme/static/js/2.53becc15.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f86e1bd4.js",
     "static/js/2.53becc15.chunk.js",
-    "static/css/main.6422a4d8.chunk.css",
+    "static/css/main.16b02574.chunk.css",
     "static/js/main.a92230ab.chunk.js"
   ]
 }
